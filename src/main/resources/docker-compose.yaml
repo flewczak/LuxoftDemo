@@ -1,0 +1,13 @@
+version : '3'
+services:
+  mysql:
+    image: mysql:latest
+    container_name: db-demo
+    environment:
+      #configuration just for local development
+      MYSQL_ROOT_PASSWORD: admin
+      MYSQL_DATABASE: referenceDataset
+    ports:
+      - "3309:3306"
+    volumes:
+      - "./ddl/Schema.sql:/docker-entrypoint-initdb.d/1.sql"
